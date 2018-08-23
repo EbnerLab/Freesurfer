@@ -70,3 +70,25 @@ sed 's/ \+/,/g' rh.BA.volume.txt > rh.BA.volume.csv
 sed 's/ \+/,/g' rh.BA.thickness.txt > rh.BA.thickness.csv
 sed 's/ \+/,/g' rh.BA.area.txt > rh.BA.area.csv
 sed 's/ \+/,/g' rh.BA.meancurv.txt > rh.BA.meancurv.csv
+
+#combine .csv files into single file 
+OutFileName="freesurfer_stats.csv"
+i=0
+for filename in ./*.csv; do 
+ if [ "$filename"  != "$OutFileName" ] ;
+ then 
+   if [[ $i -eq 0 ]] ; then 
+      head -1  $filename >   $OutFileName
+   fi
+   tail -n +2  $filename >>  $OutFileName
+   i=$(( $i + 1 ))
+ fi
+done
+
+#cleans and organizes directory by moving old .txt and .csv files into new directories for storage
+mkdir stats_files/
+mv *.txt stats_files/
+mv lh.*.csv stats_files/
+mv rh.*.csv stats_files/
+mv a*.csv stats_files/
+mv wm*.csv stats_files/
