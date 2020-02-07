@@ -6,8 +6,8 @@ module load freesurfer/6.0.0
 
 #defines enviroment variable freesurfer_home and sources setup script to run on local machine
 #comment out module load above and uncomment the two lines below for local use, otherwise leave as is for supercomputer (Hipergator) use
-##export FREESURFER_HOME=/usr/local/freesurfer
-##source $FREESURFER_HOME/SetUpFreeSurfer.sh
+#export FREESURFER_HOME=/usr/local/freesurfer
+#source $FREESURFER_HOME/SetUpFreeSurfer.sh
 
 #designats current directory as suject directory
 export SUBJECTS_DIR=./
